@@ -2,26 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: #ffffff;
+    color: #0f1117;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e6f0;
+    border-radius: 16px;
   }
+  .card-hover {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .card-hover:hover {
+    background: #f8f9ff;
+    border-color: #5170ff;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #0f1117 20%, #6b85ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-indigo {
+    background: linear-gradient(135deg, #6b85ff 0%, #5170ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-bg {
+    background: radial-gradient(
+      ellipse 70% 40% at 50% -5%,
+      rgba(81, 112, 255, 0.07),
+      transparent 65%
+    );
+  }
+}
+
+/* FAQ accordion */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-icon {
+  transition: transform 0.2s ease;
+  display: inline-block;
 }
